@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Search Results
+{% endblock %}
+
+{% block content %}
+    <div class="card-container index-body-2">
+        {% for result in results %}
+            <a href="{{ url_for('details', tmdb_id=result['tmdb_id'], media_type=result['media_type'] )}}" class="card-link">
+                <div class="card">
+                    <img src="{{ result['poster_image'] }}" alt="Poster for {{ result['title'] }}">
+                    <div class="card-details">
+                        <h3>{{ result['title'] }}</h3>
+                        <p><span class="bold">Year:</span> {{ result['year'] }}</p>
+                        <p><span class="bold">Type:</span> {{ result['media_type'] }}</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        window.onbeforeunload = function() {
+            Swal.fire({
+                title: 'Loading... Please Wait',
+                showConfirmButton: false,
+                allowOutsideClick: false,
+                closeOnEsc: false,
+                onBeforeOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+        };
+    </script>
+
+{% endblock %}

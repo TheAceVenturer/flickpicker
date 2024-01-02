@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="{{ url_for('static', filename='img/favicon.ico') }}">
+        <title>FlickPicker - {% block title %}{% endblock %}</title>
+        <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+                justify-content: center;
+                align-items: center;
+            }
+            main {
+                flex: 1 0 auto;
+            }
+            footer {
+                text-align: center;
+                max-width: 810px;
+                background-color: #acc4af;
+                color: black;
+                padding: 10px;
+                border-radius: 20px;
+            }
+            footer p {
+                margin: 5px;
+                line-height: 1.2;
+            }
+        </style>
+    </head>
+
+    <body class="{{ body_class | default('index-body') }}">
+        <header>
+            <div class="container">
+                <h1 class="index-h1">
+                    <a href="/">
+                        <img class="align-middle" src="{{ url_for('static', filename='img/main_icon_shadow.webp') }}" alt="Main Icon" style="max-height: 100px;">
+                        <span class="align-middle">FlickPicker</span>
+                    </a>
+                </h1>
+                <form id="searchForm" action="/" method="POST">
+                    <input type="text" name="user_input" placeholder="Enter a movie or TV show" required>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </header>
+
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer>
+            <p>This app is not used for commercial purposes and is only intended for educational purposes. This website uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB. Information about movies and TV shows are obtained from IMDb and Rotten Tomatoes but are not endorsed, certified, or otherwise approved by IMDb or Rotten Tomatoes.</p>
+        </footer>
+
+    </body>
+
+</html>

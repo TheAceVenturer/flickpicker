@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Movie/TV Show Details
+{% endblock %}
+
+{% block content %}
+    <div class="container-2">
+        <div class="card-2">
+            <div>
+                <img src="{{ details['poster_image'] }}" alt="Poster for {{ details['title'] }}">
+            </div>
+            <div class="card-2-details">
+                <h3>{{ details['title'] }}</h3>
+                <p><span class="bold">Year:</span> {{ details['year'] }}</p>
+                {% if details['runtime'] %}
+                    <p><span class="bold">Runtime:</span> {{ details['runtime'] }}</p>
+                {% endif %}
+                {% if details['genre'] %}
+                    <p><span class="bold">Genre:</span> {{ details['genre']|join(', ') }}</p>
+                {% endif %}
+                {% if details['director'] %}
+                    <p><span class="bold">Director:</span> {{ details['director']|join(', ') }}</p>
+                {% endif %}
+                {% if details['creator'] %}
+                    <p><span class="bold">Creator:</span> {{ details['creator']|join(', ') }}</p>
+                {% endif %}
+                {% if details['number_of_seasons'] %}
+                    <p><span class="bold">Total Seasons:</span> {{ details['number_of_seasons']}}</p>
+                {% endif %}
+                {% if details['number_of_episodes'] %}
+                    <p><span class="bold">Total Episodes:</span> {{ details['number_of_episodes']}}</p>
+                {% endif %}
+                {% if details['overview'] %}
+                    <p><span class="bold">Overview:</span> {{ details['overview']}}</p>
+                {% endif %}
+            </div>
+        </div>
+
+
+        <div class="card-3">
+            <div class="card-3-details">
+                <h3>Ratings</h3>
+                <div class="two-columns">
+                    <div>
+                        {% if details['tmdb_rating'] %}
+                            <p>
+                                <a href="https://www.themoviedb.org/{{ details.media_type|lower }}/{{ details.tmdb_id }}" target="_blank">
+                                    <img src="/static/img/tmdb_logo.svg" alt="TMDB Rating:" style="max-height: 42px; border: 2px outset #dae0db; border-radius: 8px;" />
+                                </a>
+                            </p>
+                            <p>
+                                <span class="bold">TMDB Rating:</span> {{ details['tmdb_rating'] }}/10
+                            </p>
+                        {% endif %}
+
+                        <br>
+
+                        {% if details['imdb_rating'] %}
+                            <p>
+                                <a href="https://www.imdb.com/title/{{ details.imdb_id }}" target="_blank">
+                                    <img src="/static/img/imdb_logo.svg" alt="IMDb Rating:" style="max-height: 50px; border: 2px outset #dae0db; border-radius: 8px;" />
+                                </a>
+                            </p>
+                            <p>
+                                <span class="bold">IMDb Rating:</span> {{ details['imdb_rating'] }}/10
+                            </p>
+                        {% endif %}
+                    </div>
+
+
+                    <div>
+                        {% if details['rt_scores']['tomatometer'] %}
+                            <p>
+                                {% set rt_url = details['rt_url'] %}
+                                <p>
+                                    {% if details['rt_scores']['tomatometer_state'] == 'rotten' %}
+                                        <a href="{{ rt_url }}" target="_blank">
+                                            <img src="/static/img/rt_rotten.svg" alt="Tomatometer:" style="max-height: 42px; border: 2px outset #dae0db; border-radius: 8px;" />
+                                        </a>
+                                    {% elif details['rt_scores']['tomatometer_state'] == 'fresh' %}
+                                        <a href="{{ rt_url }}" target="_blank">
+                                            <img src="/static/img/rt_fresh.svg" alt="Tomatometer:" style="max-height: 42px; border: 2px outset #dae0db; border-radius: 8px;" />
+                                        </a>
+                                    {% elif details['rt_scores']['tomatometer_state'] == 'certified-fresh' %}
+                                        <a href="{{ rt_url }}" target="_blank">
+                                            <img src="/static/img/rt_certified-fresh.svg" alt="Tomatometer:" style="max-height: 42px; border: 2px outset #dae0db; border-radius: 8px;" />
+                                        </a>
+                                    {% endif %}
+                                </p>
+                                <p>
+                                    <span class="bold">Tomatometer:</span> {{ details['rt_scores']['tomatometer'] }}%
+                                </p>
+                            </p>
+                        {% endif %}
+
+                        <br>
+
+                        {% if details['rt_scores']['audience_score'] %}
+                            {% set rt_url = details['rt_url'] %}
+                            <p>
+                                {% if details['rt_scores']['audience_state'] == 'upright' %}
+                                    <a href="{{ rt_url }}" target="_blank">
+                                        <img src="/static/img/rt_upright.svg" alt="Audience Score:" style="max-height: 50px; border: 2px outset #dae0db; border-radius: 8px;" />
+                                    </a>
+                                {% elif details['rt_scores']['audience_state'] == 'spilled' %}
+                                    <a href="{{ rt_url }}" target="_blank">
+                                        <img src="/static/img/rt_spilled.svg" alt="Audience Score:" style="max-height: 50px; border: 2px outset #dae0db; border-radius: 8px;" />
+                                    </a>
+                                {% endif %}
+                            </p>
+                            <p>
+                                <span class="bold">Audience Score:</span> {{ details['rt_scores']['audience_score'] }}%
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+
+
+        <div class="card-2">
+            <div class="card-2-details">
+                <h3>Trailer</h3>
+                {% if details['trailer_id'] %}
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ details['trailer_id'] }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                {% else %}
+                    <p>No trailer available.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

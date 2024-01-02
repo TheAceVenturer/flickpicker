@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Movie/TV Show Search
+{% endblock %}
+
+{% block content %}
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+{% endblock %}
