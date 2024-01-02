@@ -1,7 +1,7 @@
 # FlickPicker - Find the Flicks You Love
 
-## Link to live project: <https://flickpicker.glitch.me/>
-[![FlickPicker - Find The Flicks You Love](https://imgtr.ee/images/2023/12/17/4897de9702a251fa66c71de377e66e43.jpeg)](https://flickpicker.glitch.me/)
+## Link to live project: <https://flick-picker.glitch.me/>
+[![FlickPicker - Find The Flicks You Love](https://imgtr.ee/images/2023/12/17/4897de9702a251fa66c71de377e66e43.jpeg)](https://flick-picker.glitch.me/)
 
 **Note on Hosting:** The FlickPicker application is currently hosted on Glitch, a platform that offers real-time collaborative editing and instant hosting. Please be aware that the performance and availability of the app may be subject to Glitch's terms of service and usage limits.
 
