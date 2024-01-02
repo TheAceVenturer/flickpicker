@@ -19,3 +19,19 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## Third-Party Software Licenses
+
+Below is a list of third-party software used in the FlickPicker project,
+along with their licenses:
+
+- Lato Font:
+  Copyright (c) 2010-2014, Łukasz Dziedzic (dziedzic@typoland.com),
+  with Reserved Font Name [Lato](https://www.latofonts.com/).
+  Licensed under the [SIL Open Font License, Version 1.1](http://scripts.sil.org/OFL).
+  [View on Google fonts](https://fonts.google.com/specimen/Lato)
+
+- SweetAlert2:
+  The MIT License (MIT)
+  Copyright (c) 2014 Tristan Edwards & Limon Monte
+  [View on GitHub](https://sweetalert2.github.io/)
